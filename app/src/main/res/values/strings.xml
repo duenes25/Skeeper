@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">Skeeper</string>
+  <string name="initial_score">0</string>
+  <string name="increment">+</string>
+  <string name="home_team">Home Team</string>
+  <string name="vistor_team">Visitor Team</string>
+  <string name="decrement">-</string>
+</resources>
