@@ -59,59 +59,11 @@ class MainActivity : AppCompatActivity() {
   private var homeScore= 0
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    // Switch to AppTheme for displaying the activity
+
     setTheme(R.style.AppTheme)
-
     super.onCreate(savedInstanceState)
-
     val binding = ActivityMainBinding.inflate(layoutInflater)
-    binding.composeView.apply {
-      // Dispose of the Composition when the view's LifecycleOwner
-      // is destroyed
-      //setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-      setContent {
-        val visitorScore = remember { mutableStateOf(0) }
-        Column() {
-          Text(
-              text = stringResource(id = R.string.vistor_team),
-              fontSize = 25.sp,
-              color = colorResource(id = R.color.colorPrimary)
-          )
-          Row(modifier = Modifier.padding(top = 15.dp)) {
-            Button(
-                onClick = { visitorScore.value -- },
-                colors= ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color
-                    .colorPrimary)),
-                modifier = Modifier.height(45.dp).width(70.dp)
-            ){
-              Text(
-                  text = stringResource(id = R.string.decrement),
-                  color = Color.White
-              )
-            }
-            Text(
-                text = visitorScore.value.toString(),
-                fontSize = 35.sp,
-                color = colorResource(id = R.color.colorPrimaryDark),
-                modifier = Modifier.padding(horizontal = 15.dp)
-            )
-            Button(
-                onClick = { visitorScore.value ++ },
-                colors= ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color
-                    .colorPrimary)),
-                modifier = Modifier.height(45.dp).width(70.dp)
-            ){
-              Text(
-                  text = stringResource(id = R.string.increment),
-                  color = Color.White
-              )
-            }
-          }
-
-        }
-
-      }
-    }
+    setContentView(binding.root)
 
     binding.decrementHomeButton.setOnClickListener {
       homeScore --
@@ -122,12 +74,43 @@ class MainActivity : AppCompatActivity() {
       homeScore ++
       binding.homeScoreText.text = homeScore.toString()
     }
+    
+    binding.composeView.apply {
+      // We are now inside the Compose View.
+      // Set the composition strategy
+      setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
+      // Set composition content
+      setContent {
+        val visitorScore = remember { mutableStateOf(0) }
+        Column {
+          Text( text = stringResource(id = R.string.vistor_team),
+              fontSize = 25.sp,
+              color = colorResource(id = R.color.colorPrimary))
+          Row( modifier = Modifier.padding(top = 15.dp)) {
+            Button( onClick = { visitorScore.value -- },
+                colors= ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color
+                    .colorPrimary)),
+                modifier = Modifier.height(45.dp).width(70.dp)){
+              Text( text = stringResource(id = R.string.decrement),
+                  color = Color.White)
+            }
+            Text( text = visitorScore.value.toString(),
+                fontSize = 35.sp,
+                color = colorResource(id = R.color.colorPrimaryDark),
+                modifier = Modifier.padding(horizontal = 15.dp))
+            Button( onClick = { visitorScore.value ++ },
+                colors= ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color
+                    .colorPrimary)),
+                modifier = Modifier.height(45.dp).width(70.dp)){
+              Text( text = stringResource(id = R.string.increment),
+                  color = Color.White)
+            }
+          }
 
-    //setContentView(R.layout.activity_main)
-    setContentView(binding.root)
+        }
 
-    // Your code
-
+      }
+    }
 
   }
 
