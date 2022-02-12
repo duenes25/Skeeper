@@ -36,19 +36,6 @@ package com.raywenderlich.android.skeeper
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.compose.material.Text
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.raywenderlich.android.skeeper.databinding.ActivityMainBinding
 
 /**
@@ -73,43 +60,6 @@ class MainActivity : AppCompatActivity() {
     binding.incrementHomeButton.setOnClickListener {
       homeScore ++
       binding.homeScoreText.text = homeScore.toString()
-    }
-    
-    binding.composeView.apply {
-      // We are now inside the Compose View.
-      // Set the composition strategy
-      setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
-      // Set composition content
-      setContent {
-        val visitorScore = remember { mutableStateOf(0) }
-        Column {
-          Text( text = stringResource(id = R.string.vistor_team),
-              fontSize = 25.sp,
-              color = colorResource(id = R.color.colorPrimary))
-          Row( modifier = Modifier.padding(top = 15.dp)) {
-            Button( onClick = { visitorScore.value -- },
-                colors= ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color
-                    .colorPrimary)),
-                modifier = Modifier.height(45.dp).width(70.dp)){
-              Text( text = stringResource(id = R.string.decrement),
-                  color = Color.White)
-            }
-            Text( text = visitorScore.value.toString(),
-                fontSize = 35.sp,
-                color = colorResource(id = R.color.colorPrimaryDark),
-                modifier = Modifier.padding(horizontal = 15.dp))
-            Button( onClick = { visitorScore.value ++ },
-                colors= ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color
-                    .colorPrimary)),
-                modifier = Modifier.height(45.dp).width(70.dp)){
-              Text( text = stringResource(id = R.string.increment),
-                  color = Color.White)
-            }
-          }
-
-        }
-
-      }
     }
 
   }
