@@ -15,14 +15,26 @@
     <!-- Main Activity -->
     <activity
         android:name=".MainActivity"
-        android:theme="@style/SplashTheme"
-        android:exported="true">
+        android:exported="true"
+        android:theme="@style/SplashTheme">
+      <!--
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+      -->
+    </activity>
+
+    <!-- Compose Activity -->
+    <activity
+        android:name=".ComposeActivity"
+        android:exported="true"
+        android:theme="@style/AppTheme.NoActionBar" >
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-
   </application>
 
 </manifest>
