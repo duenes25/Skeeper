@@ -100,5 +100,8 @@ fun VisitorView(visitorScore: Int, decreaseScore:  () -> Unit, increaseScore:  (
             color = Color.White)
       }
     }
+    Divider(color = colorResource(id = R.color.colorPrimary),
+        thickness = 1.dp,
+        modifier = Modifier.padding(horizontal = 20.dp, vertical= 40.dp))
   }
 }
