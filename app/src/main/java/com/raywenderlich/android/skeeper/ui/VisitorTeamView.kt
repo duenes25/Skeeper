@@ -68,7 +68,7 @@ class VisitorTeamView @JvmOverloads constructor(
     setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-      Text( text = stringResource(id = R.string.vistor_team),
+      Text( text = stringResource(id = R.string.visitor_team),
           fontSize = 25.sp,
           color = colorResource(id = R.color.colorPrimary))
       Row( modifier = Modifier.padding(top = 15.dp)) {

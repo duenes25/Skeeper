@@ -49,6 +49,8 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidViewBinding
+import com.raywenderlich.android.skeeper.databinding.VisitorTeamXmlViewBinding
 
 class ComposeActivity : ComponentActivity() {
 
@@ -58,22 +60,32 @@ class ComposeActivity : ComponentActivity() {
         Surface(color = colorResource(id = R.color.design_default_color_background),
             modifier = Modifier.fillMaxWidth()) {
 
-          var visitorScore = remember { mutableStateOf(0)}
 
-          VisitorView(visitorScore = visitorScore.value,
-              decreaseScore = { visitorScore.value --},
-              increaseScore = { visitorScore.value ++})
+          val homeScore = remember { mutableStateOf(0)}
+          val visitorScore = remember { mutableStateOf(0)}
+
+          Column (horizontalAlignment = Alignment.CenterHorizontally){
+            HomeTeamComposeView(homeScore = homeScore.value,
+                decreaseScore = { homeScore.value-- },
+                increaseScore = { homeScore.value++ })
+            Divider(color = colorResource(id = R.color.colorPrimary),
+                thickness = 1.dp,
+                modifier = Modifier.padding(horizontal = 20.dp, vertical= 35.dp))
+            VisitorTeamXmlView(visitorScore = visitorScore.value,
+                decreaseScore = { visitorScore.value-- },
+                increaseScore = { visitorScore.value++ })
+          }
         }
     }
   }
 }
 
 @Composable
-fun VisitorView(visitorScore: Int, decreaseScore:  () -> Unit, increaseScore:  () -> Unit){
+fun HomeTeamComposeView(homeScore: Int, decreaseScore:  () -> Unit, increaseScore:  () -> Unit){
   Column(
       modifier = Modifier.padding(top = 30.dp),
       horizontalAlignment = Alignment.CenterHorizontally) {
-    Text( text = stringResource(id = R.string.vistor_team),
+    Text( text = stringResource(id = R.string.home_team),
         fontSize = 25.sp,
         color = colorResource(id = R.color.colorPrimary))
     Row( modifier = Modifier.padding(top = 15.dp)) {
@@ -86,7 +98,7 @@ fun VisitorView(visitorScore: Int, decreaseScore:  () -> Unit, increaseScore:  (
         Text( text = stringResource(id = R.string.decrement),
             color = Color.White)
       }
-      Text( text = visitorScore.toString(),
+      Text( text = homeScore.toString(),
           fontSize = 35.sp,
           color = colorResource(id = R.color.colorPrimaryDark),
           modifier = Modifier.padding(horizontal = 15.dp))
@@ -100,8 +112,16 @@ fun VisitorView(visitorScore: Int, decreaseScore:  () -> Unit, increaseScore:  (
             color = Color.White)
       }
     }
-    Divider(color = colorResource(id = R.color.colorPrimary),
-        thickness = 1.dp,
-        modifier = Modifier.padding(horizontal = 20.dp, vertical= 40.dp))
+  }
+}
+
+
+@Composable
+fun VisitorTeamXmlView(visitorScore: Int, decreaseScore:  () -> Unit, increaseScore:  () -> Unit){
+
+  AndroidViewBinding(VisitorTeamXmlViewBinding::inflate){
+    visitorScoreText.text = visitorScore.toString()
+    decrementVisitorButton.setOnClickListener { decreaseScore() }
+    incrementVisitorButton.setOnClickListener { increaseScore() }
   }
 }
