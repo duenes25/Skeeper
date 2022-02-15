@@ -54,11 +54,6 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
 
-# Custom
-.idea/vcs.xml
-.idea/misc.xml
-.idea/modules.xml
-
 # OS-specific files
 .DS_Store
 .DS_Store?
@@ -72,31 +67,8 @@ Thumbs.db
 *.iml
 *.ipr
 *.iws
-/.idea/*
-
-# IDEA/Android Studio Ignore exceptions
-!/.idea/vcs.xml
-!/.idea/fileTemplates/
-!/.idea/inspectionProfiles/
-!/.idea/scopes/
-!/.idea/codeStyles/
-!/.idea/encodings.xml
-!/.idea/copyright/
-!/.idea/compiler.xml
+.idea
 
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
-
-# Sensitive or high-churn files:
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.xml
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-
-# Gradle:
-.idea/**/gradle.xml
-.idea/**/libraries
