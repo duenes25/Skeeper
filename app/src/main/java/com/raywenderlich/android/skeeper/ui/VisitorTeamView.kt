@@ -53,28 +53,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.raywenderlich.android.skeeper.R
 
-class VisitorTeamAbstractView @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : AbstractComposeView(context, attrs, defStyleAttr) {
 
-  private val visitorScore =  mutableStateOf(0)
-
-  @Composable
-  override fun Content() {
-
-    // Set the composition strategy
-    setViewCompositionStrategy(
-        ViewCompositionStrategy.DisposeOnDetachedFromWindow )
-
-    VisitorScreenView(
-        visitorScore = visitorScore.value,
-        decreaseScore = { visitorScore.value-- },
-        increaseScore = { visitorScore.value++ })
-
-  }
-}
 
 @Composable
 fun VisitorScreenView(visitorScore: Int, decreaseScore:  () -> Unit, increaseScore:  () -> Unit){
