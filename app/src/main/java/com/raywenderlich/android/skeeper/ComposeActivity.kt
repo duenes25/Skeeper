@@ -60,7 +60,6 @@ class ComposeActivity : ComponentActivity() {
         Surface(color = colorResource(id = R.color.design_default_color_background),
             modifier = Modifier.fillMaxWidth()) {
 
-
           val homeScore = remember { mutableStateOf(0)}
           val visitorScore = remember { mutableStateOf(0)}
 
@@ -114,7 +113,6 @@ fun HomeTeamComposeView(homeScore: Int, decreaseScore:  () -> Unit, increaseScor
     }
   }
 }
-
 
 @Composable
 fun VisitorTeamXmlView(visitorScore: Int, decreaseScore:  () -> Unit, increaseScore:  () -> Unit){

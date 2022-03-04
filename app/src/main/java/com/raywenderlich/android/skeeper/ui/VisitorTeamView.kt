@@ -53,11 +53,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.raywenderlich.android.skeeper.R
 
-class VisitorTeamView @JvmOverloads constructor(
-      context: Context,
-      attrs: AttributeSet? = null,
-      defStyleAttr: Int = 0
-  ) : AbstractComposeView(context, attrs, defStyleAttr) {
+class VisitorTeamAbstractView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : AbstractComposeView(context, attrs, defStyleAttr) {
 
   private val visitorScore =  mutableStateOf(0)
 
@@ -65,31 +65,41 @@ class VisitorTeamView @JvmOverloads constructor(
   override fun Content() {
 
     // Set the composition strategy
-    setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
+    setViewCompositionStrategy(
+        ViewCompositionStrategy.DisposeOnDetachedFromWindow )
 
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-      Text( text = stringResource(id = R.string.visitor_team),
-          fontSize = 25.sp,
-          color = colorResource(id = R.color.colorPrimary))
-      Row( modifier = Modifier.padding(top = 15.dp)) {
-        Button( onClick = { visitorScore.value -- },
-            colors= ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color
-                .colorPrimary)),
-            modifier = Modifier.height(45.dp).width(70.dp)){
-          Text( text = stringResource(id = R.string.decrement),
-              color = Color.White)
-        }
-        Text( text = visitorScore.value.toString(),
-            fontSize = 35.sp,
-            color = colorResource(id = R.color.colorPrimaryDark),
-            modifier = Modifier.padding(horizontal = 15.dp))
-        Button( onClick = { visitorScore.value ++ },
-            colors= ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color
-                .colorPrimary)),
-            modifier = Modifier.height(45.dp).width(70.dp)){
-          Text( text = stringResource(id = R.string.increment),
-              color = Color.White)
-        }
+    VisitorScreenView(
+        visitorScore = visitorScore.value,
+        decreaseScore = { visitorScore.value-- },
+        increaseScore = { visitorScore.value++ })
+
+  }
+}
+
+@Composable
+fun VisitorScreenView(visitorScore: Int, decreaseScore:  () -> Unit, increaseScore:  () -> Unit){
+  Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Text( text = stringResource(id = R.string.visitor_team),
+        fontSize = 25.sp,
+        color = colorResource(id = R.color.colorPrimary))
+    Row( modifier = Modifier.padding(top = 15.dp)) {
+      Button( onClick = { decreaseScore() },
+          colors= ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color
+              .colorPrimary)),
+          modifier = Modifier.height(45.dp).width(70.dp)){
+        Text( text = stringResource(id = R.string.decrement),
+            color = Color.White)
+      }
+      Text( text = visitorScore.toString(),
+          fontSize = 35.sp,
+          color = colorResource(id = R.color.colorPrimaryDark),
+          modifier = Modifier.padding(horizontal = 15.dp))
+      Button( onClick = { increaseScore() },
+          colors= ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color
+              .colorPrimary)),
+          modifier = Modifier.height(45.dp).width(70.dp)){
+        Text( text = stringResource(id = R.string.increment),
+            color = Color.White)
       }
     }
   }

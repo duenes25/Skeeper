@@ -37,6 +37,10 @@ package com.raywenderlich.android.skeeper
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.raywenderlich.android.skeeper.databinding.ActivityMainBinding
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import com.raywenderlich.android.skeeper.ui.VisitorScreenView
 
 /**
  * Main Screen
