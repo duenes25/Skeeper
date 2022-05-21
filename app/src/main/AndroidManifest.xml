@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2022 Razeware LLC
   ~
@@ -28,8 +29,6 @@
   ~ THE SOFTWARE.
   -->
 
-
-<?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.raywenderlich.android.skeeper"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
