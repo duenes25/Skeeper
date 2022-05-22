@@ -32,7 +32,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.skeeper
+package com.yourcompany.skeeper
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -50,7 +50,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidViewBinding
-import com.raywenderlich.android.skeeper.databinding.VisitorTeamXmlViewBinding
+import com.yourcompany.skeeper.databinding.VisitorTeamXmlViewBinding
 
 class ComposeActivity : ComponentActivity() {
 
