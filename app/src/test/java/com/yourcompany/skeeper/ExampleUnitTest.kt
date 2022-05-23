@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Razeware LLC
+ * Copyright (c) 2022 Razeware LLC
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,40 +32,20 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.skeeper
+package com.yourcompany.skeeper
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.raywenderlich.android.skeeper.databinding.ActivityMainBinding
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.ViewCompositionStrategy
-import com.raywenderlich.android.skeeper.ui.VisitorScreenView
+import org.junit.Test
+
+import org.junit.Assert.*
 
 /**
- * Main Screen
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * See [testing documentation](http://d.android.com/tools/testing).
  */
-class MainActivity : AppCompatActivity() {
-
-  private var homeScore= 0
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-
-    setTheme(R.style.AppTheme)
-    super.onCreate(savedInstanceState)
-    val binding = ActivityMainBinding.inflate(layoutInflater)
-    setContentView(binding.root)
-
-    binding.decrementHomeButton.setOnClickListener {
-      homeScore --
-      binding.homeScoreText.text = homeScore.toString()
-    }
-
-    binding.incrementHomeButton.setOnClickListener {
-      homeScore ++
-      binding.homeScoreText.text = homeScore.toString()
-    }
-
+class ExampleUnitTest {
+  @Test
+  fun addition_isCorrect() {
+    assertEquals(4, 2 + 2)
   }
-
 }

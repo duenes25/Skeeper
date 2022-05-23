@@ -32,7 +32,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.skeeper.ui
+package com.yourcompany.skeeper.ui
 
 import android.content.Context
 import android.util.AttributeSet
@@ -51,7 +51,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.raywenderlich.android.skeeper.R
+import com.yourcompany.skeeper.R
 
 class VisitorTeamView @JvmOverloads constructor(
     context: Context,

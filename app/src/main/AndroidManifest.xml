@@ -30,7 +30,7 @@
   ~ THE SOFTWARE.
   -->
 
-<manifest package="com.raywenderlich.android.skeeper"
+<manifest package="com.yourcompany.skeeper"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -45,7 +45,7 @@
 
     <!-- Main Activity -->
     <activity
-        android:name=".MainActivity"
+        android:name="com.yourcompany.skeeper.MainActivity"
         android:exported="true"
         android:theme="@style/SplashTheme">
       <!--
@@ -58,7 +58,7 @@
 
     <!-- Compose Activity -->
     <activity
-        android:name=".ComposeActivity"
+        android:name="com.yourcompany.skeeper.ComposeActivity"
         android:exported="true"
         android:theme="@style/AppTheme.NoActionBar" >
       <intent-filter>

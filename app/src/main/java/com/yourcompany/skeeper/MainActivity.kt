@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Razeware LLC
+ * Copyright (c) 2022 Razeware LLC
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,26 +32,40 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.skeeper
+package com.yourcompany.skeeper
 
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
-import org.junit.Assert.assertEquals
-import org.junit.Test
-import org.junit.runner.RunWith
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.yourcompany.skeeper.databinding.ActivityMainBinding
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import com.yourcompany.skeeper.ui.VisitorScreenView
 
 /**
- * Instrumented test, which will execute on an Android device.
- *
- * See [testing documentation](http://d.android.com/tools/testing).
+ * Main Screen
  */
-@RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+class MainActivity : AppCompatActivity() {
 
-  @Test
-  fun useAppContext() {
-    // Context of the app under test.
-    val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-    assertEquals("com.raywenderlich.android.skeeper", appContext.packageName)
+  private var homeScore= 0
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+
+    setTheme(R.style.AppTheme)
+    super.onCreate(savedInstanceState)
+    val binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+
+    binding.decrementHomeButton.setOnClickListener {
+      homeScore --
+      binding.homeScoreText.text = homeScore.toString()
+    }
+
+    binding.incrementHomeButton.setOnClickListener {
+      homeScore ++
+      binding.homeScoreText.text = homeScore.toString()
+    }
+
   }
+
 }
